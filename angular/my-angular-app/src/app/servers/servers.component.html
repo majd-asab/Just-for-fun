@@ -1,5 +1,20 @@
-<button 
-class="btn btn-primary" 
+<label>events binding using $event</label>
+<input
+  type="text"
+  class="form-control"
+  (input)="onUpdateServerName($event)"
+  >
+<p>{{ serverName }}</p>  <!--this is called string interpolation-->
+
+<label>using 2way binding</label>
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="serverName"
+>
+<!--<p>{{ serverName }}</p>  &lt;!&ndash;this is called string interpolation&ndash;&gt;-->
+<button
+class="btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
 <p>{{ serverCreationStatus }}</p>
