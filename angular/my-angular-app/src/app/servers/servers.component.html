@@ -13,27 +13,38 @@
   [(ngModel)]="serverName"
 >
 <p>{{ serverName }}</p>
+
+<hr>
 <!--Practice-->
 <label>Practice</label>
-
 <input
   type="text"
   class="form-control"
   [(ngModel)]="username"
 >
-
-
 <button
 class="btn btn-primary"
 [disabled]=" username == '' "
 (click)="resetUsername()">Reset username</button>
 
 <p>{{ username }}</p>  <!--this is called string interpolation-->
+<hr>
+
 
 <button
 class="btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!--<p>{{ serverCreationStatus }}</p>-->
+<!--adding new structural directive (structural because it changes the structure of our dom)-->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+<ng-template #noServer>
+  <p>No server created yet</p>
+</ng-template>
+<!--delete server-->
+<button
+  class="btn btn-primary"
+  [disabled]="!serverCreated"
+  (click)="serverCreated = false">Remove Server</button>
+<app-server *ngFor="let server of arrayOfServers"></app-server>
+

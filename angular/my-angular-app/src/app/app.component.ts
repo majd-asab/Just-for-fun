@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = "Majd";
+  title = 'app';
+  rc ={
+    status:0
+  }
+  onStrategySelect(event: any){
+    let selection = event.target.value;
+
+  }
 }
